@@ -5,89 +5,127 @@
 #include <string>
 using namespace std;
 
-typedef struct elmsong *addressSong;
-typedef struct elmplaylistnode *addressPlaylistNode;
-typedef struct elmplaylist *addressPlaylist;
-typedef struct elmuser *addressUser;
-typedef struct elmrole *addressRole;
+typedef struct elmrole* addressRole;
+typedef struct elmuser* addressUser;
+typedef struct elmplaylist* addressPlaylist;
+typedef struct elmsong* addressSong;
+
+typedef struct elmRelRoleUser* addressRelRoleUser;
+typedef struct elmRelUserPlaylist* addressRelUserPlaylist;
+typedef struct elmRelPlaylistSong* addressRelPlaylistSong;
 
 struct elmrole {
     string name;
     addressRole next;
+    addressRelRoleUser firstRelat;
 };
-typedef struct Roles{
+
+struct Roles {
     addressRole first;
-};
-
-struct elmsong {
-    string id;
-    string title;
-    string singer;
-    int duration;
-    addressSong next;
-    addressSong prev;
-};
-typedef struct Songs{
-    addressSong head;
-    addressSong tail;
-};
-
-struct elmplaylistnode {
-    addressPlaylist parent;
-    addressSong child;
-    addressPlaylistNode next;
-    addressPlaylistNode prev;
-};
-
-struct elmplaylist {
-    string name;
-    addressPlaylist next;
-    addressPlaylistNode firstRel;
-};
-typedef struct Playlists{
-    addressPlaylist first;
 };
 
 struct elmuser {
     string username;
     string password;
-    addressRole role;
-    addressPlaylist firstPlaylist;
     addressUser next;
+    addressRelUserPlaylist firstRelat;
 };
-typedef struct Users{
+
+struct Users {
     addressUser first;
 };
 
-void initRoleList(Roles &R);
-addressRole createRole(Roles &R, string name);
-void insertRole(Roles &R, addressRole newRole);
-addressRole findRole(Roles R, string name);
+struct elmplaylist {
+    string name;
+    addressPlaylist next;
+    addressRelPlaylistSong firstRelat;
+};
 
-addressUser createUser(Roles R);
-void insertUserLast(Users &U, addressUser newUser);
-addressUser loginUser(Users U);
+struct Playlists {
+    addressPlaylist first;
+};
 
-void initSongList(Songs &L);
-addressSong createSong(string id, string title, string singer, int duration);
-void insertSongLast(Songs &L, addressSong newSong);
-addressSong findSongByID(Songs L, string id);
-void deleteSongByID(Songs &L, string id);
-void showAllSongs(Songs L);
+struct elmsong {
+    string title;
+    string singer;
+    string genre;
+    int duration;
+    addressSong next;
+    addressSong prev;
+};
 
-addressPlaylist createPlaylist(string name);
-void insertPlaylistLast(Playlists &P, addressPlaylist newPlaylist);
-addressPlaylist findPlaylist(Playlists P, string name);
-void showPlaylists(Playlists P);
+struct Songs {
+    addressSong first;
+    addressSong last;
+};
 
-void addSongToPlaylist(addressPlaylist P, addressSong S);
-void showPlaylistSongs(addressPlaylist P);
-void removeSongFromPlaylist(addressPlaylist P, string songID);
+struct elmRelRoleUser {
+    addressUser user;
+    addressRelRoleUser next;
+};
 
-void userCreatePlaylist(addressUser U);
-void userAddSongToPlaylist(addressUser U, Songs L);
-void userRemoveSongFromPlaylist(addressUser U);
-void userShowAllPlaylists(addressUser U);
-void userDeletePlaylist(addressUser U);
+struct elmRelUserPlaylist {
+    addressPlaylist playlist;
+    addressRelUserPlaylist next;
+};
+
+struct elmRelPlaylistSong {
+    addressSong song;
+    addressRelPlaylistSong next;
+    addressRelPlaylistSong prev;
+};
+
+void createRoles(Roles &R);
+void createUsers(Users &U);
+void createPlaylists(Playlists &P);
+void createSongs(Songs &S);
+
+addressRole allocateRole(string name);
+addressUser allocateUser(string username, string password);
+addressPlaylist allocatePlaylist(string name);
+addressSong allocateSong(string title, string singer, string genre, int duration);
+
+void insertRole(Roles &R, addressRole r);
+void insertUser(Users &U, addressUser u);
+void insertPlaylist(Playlists &P, addressPlaylist p);
+void insertSong(Songs &S, addressSong s);
+
+void connectRoleUser(addressRole r, addressUser u);
+void connectUserPlaylist(addressUser u, addressPlaylist p);
+void addSongToPlaylist(addressPlaylist p, addressSong s);
+
+void EditSong(addressSong s, string title, string singer, string genre, int duration);
+void DeleteSongFromPlaylist(addressPlaylist p, addressSong s);
+void DeleteSongFromLibrary(Songs &S, Playlists P, addressSong s);
+
+void DeletePlaylist(addressUser u, addressPlaylist p);
+void EditPlaylist(addressPlaylist p, string newName);
+
+void sortPlaylistByDuration(addressPlaylist p);
+void reversePlaylist(addressPlaylist p);
+
+void showAllSongs(Songs S);  
+void showPlaylistsOfUser(addressUser u);  
+void showSongsInPlaylist(addressPlaylist p);
+
+void playPlaylist(addressPlaylist p);
+void playLibrary(Songs S);
+
+void menuAwal(Roles &R, Users &U, Playlists &P, Songs &S);
+
+void menuRegister(Roles &R, Users &U);
+addressUser menuLogin(Roles R, Users U, addressRole &roleOut);
+
+void menuAdmin(Songs &S, Playlists &P);
+void menuUser(addressUser u, Songs &S, Playlists &P);
+
+void menuCreatePlaylist(addressUser u, Playlists &P);
+void menuEditPlaylist(addressUser u, Songs &S);
+void menuAddSongToPlaylist(addressPlaylist p, Songs S);
+void menuPlayPlaylist(addressPlaylist p);
+
+void tampilkanLibrarySingkat(Songs S);
+addressPlaylist pilihPlaylist(addressUser u);
+addressSong pilihSong(Songs S);
 
 #endif
