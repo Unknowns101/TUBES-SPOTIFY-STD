@@ -95,17 +95,17 @@ void connectUserPlaylist(addressUser u, addressPlaylist p);
 void addSongToPlaylist(addressPlaylist p, addressSong s);
 
 void EditSong(addressSong s, string title, string singer, string genre, int duration);
-void DeleteSongFromPlaylist(addressPlaylist p, addressSong s);
+void DeleteSongDariPlaylist(addressPlaylist p, addressSong s);
 void DeleteSongFromLibrary(Songs &S, Playlists P, addressSong s);
 
-void DeletePlaylist(addressUser u, addressPlaylist p);
+void HapusPlaylist(addressUser u, addressPlaylist p);
 void EditPlaylist(addressPlaylist p, string newName);
 
 void sortPlaylistByDuration(addressPlaylist p);
 void reversePlaylist(addressPlaylist p);
 
-void showAllSongs(Songs S);  
-void showPlaylistsOfUser(addressUser u);  
+void showAllSongs(Songs S);
+void showPlaylistsOfUser(addressUser u);
 void showSongsInPlaylist(addressPlaylist p);
 
 void playPlaylist(addressPlaylist p);
