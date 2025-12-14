@@ -236,15 +236,20 @@ void reversePlaylist(addressPlaylist p) {
 
 void playPlaylist(addressPlaylist p) {
     addressRelPlaylistSong curr = p->firstRelat;
+    bool stop = false;
+    int pilih;
 
     if (curr == nullptr) {
         cout << "Playlist Kosong" << endl;
         return;
     }
 
-    while (curr != nullptr) {
+    while (!stop) {
+        cout << endl;
         cout << "========================" << endl;
-        cout << "Now Playing : " << curr->song->title << " - " << curr->song->singer << endl;
+        cout << "Now Playing : "
+             << curr->song->title << " - "
+             << curr->song->singer << endl;
 
         if (curr->prev != nullptr) {
             cout << "Prev        : " << curr->prev->song->title << endl;
@@ -257,9 +262,31 @@ void playPlaylist(addressPlaylist p) {
             cout << "Next        : -" << endl;
         }
         cout << "========================" << endl;
-        curr = curr->next;
+        cout << "1. Next Song" << endl;
+        cout << "2. Prev Song" << endl;
+        cout << "0. Stop" << endl;
+        cout << "Pilih: ";
+        cin >> pilih;
+
+        if (pilih == 1) {
+            if (curr->next != nullptr) {
+                curr = curr->next;
+            } else {
+               cout << "Sudah di lagu terakhir" << endl; 
+            } 
+        } else if (pilih == 2) {
+            if (curr->prev != nullptr) {
+                curr = curr->prev;
+            } else {
+                cout << "Sudah di lagu pertama" << endl;
+            } 
+        }
+        else if (pilih == 0) {
+            stop = true;
+        }
     }
 }
+
 
 void showAllSongs(Songs S) {
     addressSong s = S.first;
@@ -367,13 +394,16 @@ void sortPlaylistByDuration(addressPlaylist p) {
 
 void playLibrary(Songs S) {
     addressSong s = S.first;
+    bool stop = false;
+    int pilih;
 
     if (s == nullptr) {
         cout << "Library Kosong" << endl;
         return;
     }
 
-    while (s != nullptr) {
+    while (!stop) {
+        cout << endl;
         cout << "========================" << endl;
         cout << "Now Playing : " << s->title << " - " << s->singer << endl;
 
@@ -388,9 +418,32 @@ void playLibrary(Songs S) {
             cout << "Next        : -" << endl;
         }
         cout << "========================" << endl;
-        s = s->next;
+        cout << "1. Next Song" << endl;
+        cout << "2. Prev Song" << endl;
+        cout << "0. Stop" << endl;
+        cout << "Pilih: ";
+        cin >> pilih;
+
+        if (pilih == 1) {
+            if (s->next != nullptr) {
+                 s = s->next;
+            } else {
+                 cout << "Sudah di lagu terakhir" << endl;
+            } 
+        }
+        else if (pilih == 2) {
+            if (s->prev != nullptr) {
+                s = s->prev;
+            } else {
+                cout << "Sudah di lagu pertama" << endl;
+            } 
+        }
+        else if (pilih == 0) {
+            stop = true;
+        }
     }
 }
+
 
 void menuAwal(Roles &R, Users &U, Playlists &P, Songs &S) {
     int pilih;
