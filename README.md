@@ -1,19 +1,16 @@
 # TUBES-SPOTIFY-STD
 
-
-# Tubes Spotify – Music Library & Playlist Management
+---
 
 Program **Tubes Spotify** adalah aplikasi berbasis **C++** yang mensimulasikan sistem manajemen musik sederhana seperti Spotify.  
-Aplikasi ini dibuat untuk memenuhi **Tugas Besar Struktur Data**, dengan penerapan **Multi Linked List** dan **Double Linked List**.
+Aplikasi ini dibuat untuk memenuhi **Tugas Besar Struktur Data**, dengan penerapan **Multi Linked List**, **Double Linked List**, **Singly Linked List**.
 
----
 
 ## Deskripsi Umum
 
 Aplikasi ini menyediakan sistem login dengan dua role, yaitu **admin** dan **user**.  
 Setiap role memiliki hak akses dan fitur yang berbeda. Data lagu, playlist, user, dan role dikelola menggunakan struktur data linked list dan relasi antar list (Multi Linked List).
 
----
 
 ## Fitur Program
 
@@ -22,7 +19,6 @@ Setiap role memiliki hak akses dan fitur yang berbeda. Data lagu, playlist, user
 - Login berdasarkan data user yang tersimpan
 - Sistem menu berjalan berulang sampai user memilih logout atau exit
 
----
 
 ## Fitur Admin
 
@@ -42,8 +38,6 @@ Setiap role memiliki hak akses dan fitur yang berbeda. Data lagu, playlist, user
 4. Lihat Library  
    Menampilkan seluruh lagu yang tersedia di library dengan format:
    No. Judul - Penyanyi | Genre | Durasi
-
----
 
 ## Fitur User
 
@@ -76,8 +70,6 @@ Menampilkan simulasi pemutaran lagu dari playlist, termasuk:
 7. Play Library  
 Memutar seluruh lagu di library secara berurutan dengan informasi Prev dan Next.
 
----
-
 ## Struktur Data yang Digunakan
 
 ### Single Linked List
@@ -95,8 +87,6 @@ Digunakan untuk relasi:
 - User ke Playlist
 - Playlist ke Song
 
----
-
 ## Konsep Struktur Data
 
 | Konsep | Implementasi |
@@ -107,9 +97,7 @@ Digunakan untuk relasi:
 | Traversal | Menampilkan dan memutar lagu |
 | Sorting | Pengurutan lagu berdasarkan durasi |
 | Reverse | Membalik urutan lagu |
-| Modular Program | Pemisahan header dan source file |
 
----
 
 ## Alur Program
 
