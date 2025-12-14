@@ -93,7 +93,7 @@ Digunakan untuk relasi:
 |------|-------------|
 | Multi Linked List | Relasi antar entitas |
 | Double Linked List | Library lagu dan playlist |
-| CRUD | Create, Read, Update, Delete |
+| Fungsi Primitif | Create, Read, Update, Delete |
 | Traversal | Menampilkan dan memutar lagu |
 | Sorting | Pengurutan lagu berdasarkan durasi |
 | Reverse | Membalik urutan lagu |
