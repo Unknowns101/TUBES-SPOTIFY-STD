@@ -1,124 +1,124 @@
 # TUBES-SPOTIFY-STD
 
-# 🎵 Tubes Spotify – Music Library & Playlist Management
+
+# Tubes Spotify – Music Library & Playlist Management
 
 Program **Tubes Spotify** adalah aplikasi berbasis **C++** yang mensimulasikan sistem manajemen musik sederhana seperti Spotify.  
 Aplikasi ini dibuat untuk memenuhi **Tugas Besar Struktur Data**, dengan penerapan **Multi Linked List** dan **Double Linked List**.
 
 ---
 
-## 📌 Fitur Utama
+## Deskripsi Umum
 
-### 🔐 Autentikasi
-- **Register** user dengan role (`admin` / `user`)
-- **Login** sesuai role
-- Sistem menu berjalan terus hingga user memilih **logout** atau **exit**
+Aplikasi ini menyediakan sistem login dengan dua role, yaitu **admin** dan **user**.  
+Setiap role memiliki hak akses dan fitur yang berbeda. Data lagu, playlist, user, dan role dikelola menggunakan struktur data linked list dan relasi antar list (Multi Linked List).
 
 ---
 
-## 👤 Fitur Admin
+## Fitur Program
 
-1. **Tambah Lagu**
-   - Menambahkan lagu ke library dengan data:
-     - Judul
-     - Penyanyi
-     - Genre
-     - Durasi
-
-2. **Edit Lagu**
-   - Mengubah data lagu yang ada di library
-
-3. **Hapus Lagu**
-   - Lagu dihapus dari library
-   - Lagu otomatis terhapus dari seluruh playlist yang mengandung lagu tersebut
-
-4. **Lihat Library**
-   - Menampilkan seluruh lagu dalam library dengan format:
-     ```
-     No. Judul - Penyanyi | Genre | Durasi
-     ```
+### Autentikasi
+- Register user dengan username, password, dan role (admin/user)
+- Login berdasarkan data user yang tersimpan
+- Sistem menu berjalan berulang sampai user memilih logout atau exit
 
 ---
 
-## 👥 Fitur User
+## Fitur Admin
 
-1. **Create Playlist**
-   - User dapat membuat playlist baru
+1. Tambah Lagu ke Library  
+   Admin dapat menambahkan lagu baru ke library dengan data:
+   - Judul lagu
+   - Penyanyi
+   - Genre
+   - Durasi (dalam detik)
 
-2. **Edit Playlist**
-   - Mengubah nama playlist
-   - Menambahkan lagu ke playlist
-   - Menghapus lagu dari playlist
-   - Mengurutkan lagu berdasarkan durasi
-   - Membalik urutan lagu (reverse)
+2. Edit Lagu  
+   Admin dapat mengubah detail lagu yang ada di library.
 
-3. **Delete Playlist**
-   - Menghapus playlist beserta relasi lagu di dalamnya
+3. Hapus Lagu  
+   Lagu akan dihapus dari library dan otomatis dihapus dari seluruh playlist yang menggunakan lagu tersebut.
 
-4. **Lihat Playlist**
-   - Menampilkan seluruh playlist milik user
-
-5. **Lihat Library**
-   - Menampilkan seluruh lagu yang tersedia
-
-6. **Play Playlist**
-   - Simulasi pemutaran lagu dengan informasi:
-     - Lagu saat ini
-     - Lagu sebelumnya (Prev)
-     - Lagu selanjutnya (Next)
-
-7. **Play Library**
-   - Memutar seluruh lagu di library secara berurutan
+4. Lihat Library  
+   Menampilkan seluruh lagu yang tersedia di library dengan format:
+   No. Judul - Penyanyi | Genre | Durasi
 
 ---
 
-## 🧩 Struktur Data yang Digunakan
+## Fitur User
 
-### 🔹 Single Linked List
+1. Create Playlist  
+User dapat membuat playlist baru.
+
+2. Edit Playlist  
+User dapat:
+- Mengubah nama playlist
+- Menambahkan lagu ke playlist
+- Menghapus lagu dari playlist
+- Mengurutkan lagu berdasarkan durasi
+- Membalik urutan lagu dalam playlist
+
+3. Delete Playlist  
+Menghapus playlist beserta seluruh relasi lagu di dalamnya.
+
+4. Lihat Playlist  
+Menampilkan semua playlist milik user.
+
+5. Lihat Library  
+Menampilkan seluruh lagu yang tersedia di library.
+
+6. Play Playlist  
+Menampilkan simulasi pemutaran lagu dari playlist, termasuk:
+- Lagu yang sedang diputar
+- Lagu sebelumnya (Prev)
+- Lagu berikutnya (Next)
+
+7. Play Library  
+Memutar seluruh lagu di library secara berurutan dengan informasi Prev dan Next.
+
+---
+
+## Struktur Data yang Digunakan
+
+### Single Linked List
 - Role
 - User
 - Playlist
 
-### 🔹 Double Linked List
+### Double Linked List
 - Song (Library)
-- Lagu di dalam Playlist
+- Lagu di dalam playlist
 
-### 🔹 Multi Linked List
+### Multi Linked List
 Digunakan untuk relasi:
-- Role → User
-- User → Playlist
-- Playlist → Song
+- Role ke User
+- User ke Playlist
+- Playlist ke Song
 
 ---
 
-## 🧠 Konsep Struktur Data
+## Konsep Struktur Data
 
 | Konsep | Implementasi |
 |------|-------------|
 | Multi Linked List | Relasi antar entitas |
-| Double Linked List | Library lagu & playlist |
+| Double Linked List | Library lagu dan playlist |
 | CRUD | Create, Read, Update, Delete |
-| Traversal | Menampilkan & memutar lagu |
-| Sorting | Urut lagu berdasarkan durasi |
-| Reverse | Membalik urutan playlist |
-| Modular Program | Header & CPP terpisah |
+| Traversal | Menampilkan dan memutar lagu |
+| Sorting | Pengurutan lagu berdasarkan durasi |
+| Reverse | Membalik urutan lagu |
+| Modular Program | Pemisahan header dan source file |
 
 ---
 
-## 🔁 Alur Program
+## Alur Program
 
-1. Program dimulai dari **Menu Awal**
-2. User memilih:
-   - Register
-   - Login
-   - Exit
+1. Program dimulai dari Menu Awal
+2. User memilih Register, Login, atau Exit
 3. Setelah login:
-   - Admin masuk ke Menu Admin
-   - User masuk ke Menu User
-4. Menu akan terus berulang hingga memilih **Logout**
-5. Program berhenti hanya jika memilih **Exit**
+- Admin masuk ke Menu Admin
+- User masuk ke Menu User
+4. Menu akan terus berulang sampai user memilih Logout
+5. Program berhenti jika memilih Exit
 
 ---
-
-## 📁 Struktur File
-
